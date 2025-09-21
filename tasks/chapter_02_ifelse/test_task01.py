@@ -1,5 +1,5 @@
 import pytest
-from tasks.task01_ifelse import check_number
+from tasks.chapter_02_ifelse.task01 import check_number
 
 def test_positive():
     assert check_number(5) == "positive"

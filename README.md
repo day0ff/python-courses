@@ -7,8 +7,6 @@ This repository is designed for students to **practice Python programming** and 
 ## 📚 Course Structure
 - `tasks/` → Python files with assignments.  
   Each file contains an unfinished function with `TODO` instructions.  
-- `tests/` → Unit tests for each task.  
-  Students run these tests to check if their solution is correct.
 
 ---
 
@@ -59,35 +57,33 @@ cd python-courses
     ```
 
 3. Do the Homework
-Open the file in tasks/, for example:
+Open the file in tasks/chapter_01_variables/, for example task01.py:
 
 ```python
-# tasks/task01_ifelse.py
+# tasks/chapter_01_variables/task01.py
 
-def check_number(num: int) -> str:
-    if num > 0:
-        return "positive"
-    elif num < 0:
-        return "negative"
-    else:
-        return "zero"
+name = 'Alice'
+age = 21
+is_student = True
+
 ```
+
 4. Run Tests
 To check your solution: write pytest and a pass to you solution file tests/test_task01_ifelse.py
 
 ```bash
-pytest tests/test_task01_ifelse.py
+pytest tasks/chapter_01_variables/test_task01.py
 ```
 
 You should see output like:
 
 ```bash
 ===================== test session starts =====================
-collected 9 items
+collected 5 items
 
-tests/test_task01_ifelse.py .....                        [100%]
+tasks/chapter_01_variables/test_task01.py .....                        [100%]
 
-====================== 9 passed in 0.03s ======================
+====================== 5 passed in 0.01s ======================
 ```
 
 ✅ All tests passed = task completed successfully!
@@ -115,7 +111,7 @@ pytest tests/
 For example, only test the first homework task:
 
 ```bash
-pytest tests/test_task01_ifelse.py
+pytest tasks/chapter_01_variables/test_task01.py
 ```
 
 4. Run a single test function inside a file
@@ -123,45 +119,43 @@ pytest tests/test_task01_ifelse.py
 For example, only run the test_positive function:
 
 ```bash
-pytest tests/test_task01_ifelse.py::test_positive
+pytest tests/chapter_01_variables.py::test_name_is_string
 ```
 
 ## ❓ About __init__.py Files
 
-Both tasks/ and tests/ folders contain an __init__.py file.
+tasks/ and all subfolder for example chapter_01_variables/ contain an __init__.py file.
 These files are needed so that Python treats the folders as packages, which allows imports like:
 
-from tasks.task01_ifelse import check_number
-
+from tasks.chapter_01_variables import task01
 
 The __init__.py file can be empty — this is enough to mark the folder as a package.
 
 Optionally, you can add imports or variables inside it. For example:
 
 # tasks/__init__.py
-from .task01_ifelse import check_number
+from .chapter_01_variables import name
 
 
 Now you could simply do:
 
-from tasks import check_number
-
+from tasks import name
 
 For this course, the __init__.py files are kept empty.
 
 ## 📝 Example Task
 
-Task 01: Implement the function check_number(num: int) -> str.
+Task 01: Assign variables in Python.
 
-Return "positive" if the number is greater than 0.
+write
 
-Return "negative" if the number is less than 0.
-
-Return "zero" if the number is 0.
+name = 'Alice'
+age = 21
+is_student = True
 
 Check your solution:
 
-pytest tests/test_task01_ifelse.py
+pytest tasks/chapter_01_variables/test_task01.py
 
 ## 📌 Notes
 
