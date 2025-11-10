@@ -5,9 +5,9 @@ This repository is designed for students to **practice Python programming** and 
 ---
 
 ## 📚 Course Structure
-- `tasks/` → Python files with assignments.  
-  Each file contains an unfinished function with `TODO` instructions.  
-
+- `tasks/` → Python files with assignments. Each file contains an unfinished function with `TODO` instructions;
+- `poetry.lock` → File ensures reproducible installs;
+- `pyproject.toml` → Is a configuration file used by packaging tools(like [Poetry](https://python-poetry.org/)).
 ---
 
 ## ⚙️ Dependencies
@@ -29,62 +29,61 @@ To work with this repository, you need:
     pip --version
     ```
 
-
-pytest → Testing library used to check solutions.
-
-All dependencies are listed in requirements.txt.
-
 ## 🚀 How to Use
 
 1. Clone the Repository
 
-```bash
-git clone https://github.com/day0ff/python-courses.git
-cd python-courses
-```
-
-2. Install Dependencies
-- Option A: Install from requirements.txt (recommended)
-
     ```bash
-    pip install -r requirements.txt
+    git clone https://github.com/day0ff/python-courses.git
+    cd python-courses
     ```
 
-- Option B: Install manually
+2. Install Dependencies
 
     ```bash
-    pip install pytest
+    poetry install
     ```
 
 3. Do the Homework
 Open the file in tasks/chapter_01_variables/, for example task01.py:
 
-```python
-# tasks/chapter_01_variables/task01.py
+    ```python
+    # tasks/chapter_01_variables/task01.py
 
-name = 'Alice'
-age = 21
-is_student = True
+    name = 'Alice'
+    age = 21
+    is_student = True
 
-```
+    ```
 
 4. Run Tests
 To check your solution: write pytest and a pass to you solution file tests/test_task01_ifelse.py
 
-```bash
-pytest tasks/chapter_01_variables/test_task01.py
-```
+    ```bash
+    poetry run pytest tasks/chapter_01_variables/test_task01.py
+    ```
 
-You should see output like:
+    __OR__ shorter
 
-```bash
-===================== test session starts =====================
-collected 5 items
+    ```bash
+    pytest tasks/chapter_01_variables/test_task01.py
+    ```
 
-tasks/chapter_01_variables/test_task01.py .....                        [100%]
+    Where:
+    - `tasks/` → folder of all homework tasks;
+    - `chapter_01_variables/` → the folder of the current exercise topic being performed;
+    - `test_task01.py` → a test file for checking the current exercise.
 
-====================== 5 passed in 0.01s ======================
-```
+    You should see output like:
+
+    ```bash
+    ===================== test session starts =====================
+    collected 5 items
+
+    tasks/chapter_01_variables/test_task01.py .....                        [100%]
+
+    ====================== 5 passed in 0.01s ======================
+    ```
 
 ✅ All tests passed = task completed successfully!
 
@@ -94,52 +93,57 @@ tasks/chapter_01_variables/test_task01.py .....                        [100%]
 You can run tests in different ways depending on what you want to check:
 
 1. Run all tests in the repository
-```bash
-pytest
-```
+
+    ```bash
+    pytest
+    ```
 
 2. Run all tests in a specific folder
 
-For example, run all tests in the tests/ folder:
+    For example, run all tests in the tests/ folder:
 
-```bash
-pytest tests/
-```
+    ```bash
+    pytest tasks/chapter_01_variables/
+    ```
 
 3. Run a single test file
 
-For example, only test the first homework task:
+    For example, only test the first homework task:
 
-```bash
-pytest tasks/chapter_01_variables/test_task01.py
-```
+    ```bash
+    pytest tasks/chapter_01_variables/test_task01.py
+    ```
 
 4. Run a single test function inside a file
 
-For example, only run the test_positive function:
+    For example, only run the test_positive function:
 
-```bash
-pytest tests/chapter_01_variables.py::test_name_is_string
-```
+    ```bash
+    pytest tasks/chapter_01_variables/test_task01.py::test_name_is_string
+    ```
 
 ## ❓ About __init__.py Files
 
 tasks/ and all subfolder for example chapter_01_variables/ contain an __init__.py file.
 These files are needed so that Python treats the folders as packages, which allows imports like:
 
+```# tasks/__init__.py
 from tasks.chapter_01_variables import task01
+```
 
 The __init__.py file can be empty — this is enough to mark the folder as a package.
 
 Optionally, you can add imports or variables inside it. For example:
 
-# tasks/__init__.py
+```# tasks/__init__.py
 from .chapter_01_variables import name
-
+```
 
 Now you could simply do:
 
+``` #tasks/__init__.py
 from tasks import name
+```
 
 For this course, the __init__.py files are kept empty.
 
